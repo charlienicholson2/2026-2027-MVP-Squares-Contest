@@ -293,6 +293,18 @@
     padding-bottom:2px;
   }
 
+  .board-grid-row{display:flex; align-items:stretch; gap:6px;}
+  .board-y-label{
+    position:sticky; left:0; z-index:3;
+    background:var(--purple-900);
+    writing-mode:vertical-rl; transform:rotate(180deg);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-mono); font-weight:800; font-size:12px;
+    letter-spacing:0.08em; text-transform:uppercase; color:var(--purple-300);
+    white-space:nowrap; flex-shrink:0;
+    padding:4px 6px 4px 0;
+  }
+
   .placeholder-card{padding:22px 28px;}
   .placeholder-body{padding:8px 0 4px;}
   .placeholder-body p{font-size:14px; color:var(--purple-300);}
@@ -844,7 +856,10 @@ function renderBoardCard(board){
       </div>
       <div style="position:relative;">
         <div class="grid-scroll">
-          <div class="squares-grid">${gridHtml}</div>
+          <div class="board-grid-row">
+            <div class="board-y-label">${escapeHtml(board.team_y || 'Team Y')} →</div>
+            <div class="squares-grid">${gridHtml}</div>
+          </div>
         </div>
       </div>
     </div>
