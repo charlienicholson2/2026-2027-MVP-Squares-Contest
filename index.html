@@ -558,9 +558,9 @@ const STORAGE_KEY = 'sheet-config';
 /* If this page is hosted outside Claude (e.g. GitHub Pages), window.storage
    won't exist. Paste your two published Google Sheet CSV links here directly
    and they'll be used automatically — no code beyond this needed. */
-const CONFIG 
-  boardsUrl: '',   // e.g. https://docs.google.com/spreadsheets/d/.../pub?gid=0&single=true&output=csv
-  squaresUrl: '',  // e.g. https://docs.google.com/spreadsheets/d/.../pub?gid=123&single=true&output=csv
+const CONFIG = {
+  boardsUrl: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTg0ai8MSFvWp6zPntDiJnrEn0qxa07jhBASGys1Y2BSQ0rucGtuqLG0e5OPP9dOOOFD2a6pPYM8Yax/pub?gid=780298681&single=true&output=csv',   // e.g. https://docs.google.com/spreadsheets/d/.../pub?gid=0&single=true&output=csv
+  squaresUrl: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTg0ai8MSFvWp6zPntDiJnrEn0qxa07jhBASGys1Y2BSQ0rucGtuqLG0e5OPP9dOOOFD2a6pPYM8Yax/pub?gid=567789038&single=true&output=csv',  // e.g. https://docs.google.com/spreadsheets/d/.../pub?gid=123&single=true&output=csv
 };
 
 const HAS_CLAUDE_STORAGE = (typeof window !== 'undefined' && typeof window.storage !== 'undefined');
