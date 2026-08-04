@@ -164,6 +164,32 @@
   .qcard h4{font-size:19px; font-weight:800; margin:8px 0 6px;}
   .qcard p{font-size:13.5px; color:var(--purple-700); line-height:1.5;}
 
+  .timing-callout{
+    margin-top:40px;
+    display:flex; align-items:center; justify-content:center; gap:12px;
+    background:var(--yellow);
+    color:var(--black);
+    font-weight:800;
+    font-size:16px;
+    text-align:center;
+    padding:20px 32px;
+    border-radius:100px;
+    box-shadow:0 0 0 6px rgba(255,214,0,0.18), 0 12px 32px rgba(128,0,255,0.18);
+  }
+  .timing-dot{
+    width:9px; height:9px; border-radius:50%;
+    background:var(--black);
+    flex-shrink:0;
+    animation:timing-pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes timing-pulse{
+    0%, 100%{opacity:1; transform:scale(1);}
+    50%{opacity:0.4; transform:scale(0.75);}
+  }
+  @media (max-width:560px){
+    .timing-callout{font-size:14px; padding:16px 20px; border-radius:20px;}
+  }
+
   /* ---------- BOARDS ---------- */
   .boards-section{padding:88px 0 120px; background:var(--black);}
   .boards-header{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px; margin-bottom:36px;}
@@ -363,7 +389,7 @@
   }
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
-    *{transition:none !important;}
+    *{transition:none !important; animation:none !important;}
   }
 </style>
 </head>
@@ -449,6 +475,11 @@
         <h4>Game Winner</h4>
         <p>The biggest reward of the night, based on the final score when the clock hits 0:00.</p>
       </div>
+    </div>
+
+    <div class="timing-callout">
+      <span class="timing-dot"></span>
+      Rewards will be uploaded by noon ET the morning after the game.
     </div>
   </div>
 </section>
