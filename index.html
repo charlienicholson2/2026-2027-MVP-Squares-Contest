@@ -659,6 +659,7 @@ async function loadData(){
 
 const SEASON_WEEKS = Array.from({length: 11}, (_, i) => 8 + i); // Weeks 8–18
 const GAME_DAYS = ['TNF', 'MNF'];
+const GAME_DAY_ORDER = {TNF: 0, MNF: 1}; // Thursday airs before Monday within an NFL week
 
 function fillMissingSlots(){
   const existing = new Set(boardsData.filter(b => !b.isPlaceholder).map(b => `${b.week}|${b.game_day}`));
@@ -846,7 +847,9 @@ function renderBoards(){
   empty.style.display = 'none';
 
   filtered
-    .sort((a,b) => Number(a.week) - Number(b.week) || a.game_day.localeCompare(b.game_day))
+    .sort((a,b) => Number(a.week) - Number(b.week)
+      || (GAME_DAY_ORDER[a.game_day] ?? 9) - (GAME_DAY_ORDER[b.game_day] ?? 9)
+      || String(a.board_label || '').localeCompare(String(b.board_label || '')))
     .forEach(b => outer.appendChild(renderBoardCard(b)));
 
   applyNameSearch();
