@@ -294,6 +294,7 @@
   }
 
   .board-grid-row{display:flex; align-items:stretch; gap:6px;}
+  .board-grid-wrap{position:relative;}
   .board-y-label{
     position:sticky; left:0; z-index:3;
     background:var(--purple-900);
@@ -386,10 +387,13 @@
   .modal-status{font-size:12.5px; margin-top:14px; color:var(--purple-200);}
 
   @media (max-width: 860px){
+    html, body{overflow-x:hidden;}
     .steps{grid-template-columns:repeat(2,1fr);}
     .example{grid-template-columns:1fr; padding:32px;}
     .quarters{grid-template-columns:repeat(2,1fr);}
     .board-body{grid-template-columns:1fr;}
+    .board-grid-wrap{min-width:0;}
+    .grid-scroll{min-width:0;}
     .quarter-panel{display:grid; grid-template-columns:repeat(4,1fr); gap:8px;}
     .reward-grid{grid-template-columns:repeat(2,1fr);}
   }
@@ -398,6 +402,11 @@
     .quarters{grid-template-columns:1fr;}
     .hero{padding:64px 0 48px;}
     .reward-grid{grid-template-columns:1fr;}
+    .example-visual{overflow-x:auto;}
+    .mini-grid{gap:2px;}
+    .mini-cell{font-size:8.5px;}
+    .mini-x-label, .mini-y-label{font-size:10px;}
+    .example{padding:20px;}
   }
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
@@ -526,7 +535,7 @@
   <div class="wrap">
     <div class="section-kicker">What's Up For Grabs</div>
     <h2 class="section-title" style="color:var(--white);">Every quarter pays.</h2>
-    <p class="section-lead" style="color:var(--purple-200);">Four scoring moments, four winners, every single board.</p>
+    <p class="section-lead" style="color:var(--purple-200);">Four scoring moments, four winners, every single board. Rewards below are placeholders while we lock in the final lineup.</p>
 
     <div class="reward-grid">
       <div class="reward-card">
@@ -546,6 +555,7 @@
         <div class="reward-pill bonus">Bonus Lineup</div>
       </div>
     </div>
+    <p class="reward-footnote">Placeholder rewards shown above — final details drop before Week 8.</p>
   </div>
 </section>
 
@@ -853,7 +863,7 @@ function renderBoardCard(board){
           </div>`;
         }).join('')}
       </div>
-      <div style="position:relative;">
+      <div class="board-grid-wrap">
         <div class="grid-scroll">
           <div class="board-grid-row">
             <div class="board-y-label">${escapeHtml(board.team_y || 'Team Y')} →</div>
