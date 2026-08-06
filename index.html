@@ -394,7 +394,11 @@
     .board-body{grid-template-columns:1fr;}
     .board-grid-wrap{min-width:0;}
     .grid-scroll{min-width:0;}
-    .quarter-panel{display:grid; grid-template-columns:repeat(4,1fr); gap:8px;}
+    .quarter-panel{
+      display:flex; flex-direction:row; overflow-x:auto; gap:10px;
+      padding-bottom:6px; -webkit-overflow-scrolling:touch;
+    }
+    .quarter-panel .win-slot{flex:0 0 148px;}
     .reward-grid{grid-template-columns:repeat(2,1fr);}
   }
   @media (max-width:560px){
